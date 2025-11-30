@@ -7,9 +7,9 @@
   <meta name="theme-color" content="#000">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body,html{height:100vh;background:#000;color:#fff;font-family:system-ui,sans-serif;overflow:hidden}
+    body,html{height:100vh;background:#000;color:#fff;font-family:system-ui;overflow:hidden}
     #home{padding-bottom:70px;overflow-y:auto;height:100vh}
-    .header{padding:15px 20px;background:#111;position:sticky;top:0;z-index:10}
+    .header{padding:15px;background:#111;position:sticky;top:0;z-index:10;text-align:center}
     .logo{font-size:28px;font-weight:bold;color:#ff3399}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}
     .thumb{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
@@ -17,20 +17,16 @@
     .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,0.9))}
     .badge{position:absolute;top:8px;left:8px;background:#ff3399;color:#000;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:bold}
     .thumb-title{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#ff3399;font-size:13px}
-
     #container{display:none;height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;padding:5px;background:#000}
     .page{scroll-snap-align:start}
     .page img{width:100%;display:block;border:5px solid #fff;border-radius:4px}
-
-    .reader-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.95);padding:12px;display:none;align-items:center;justify-content:space-between;z-index:999;backdrop-filter:blur(10px)}
-    .progress-text{font-size:14px}
-    .bar{width:60%;height:4px;background:#333;border-radius:2px;overflow:hidden}
+    .reader-nav{position:fixed;bottom:60px;left:0;right:0;background:rgba(0,0,0,0.95);padding:12px;display:none;justify-content:center;align-items:center;z-index:998}
+    .bar{width:70%;height:4px;background:#333;border-radius:2px;overflow:hidden;margin-left:10px}
     .fill{background:#ff3399;height:100%;width:0%;transition:width .2s}
-
-    .bottom-nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:#111;display:flex;justify-content:space-around;align-items:center;z-index:999;border-top:1px solid #333}
-    .nav-item{color:#777;font-size:10px;text-align:center;cursor:pointer}
-    .nav-item.active,.nav-item:active{color:#ff3399}
-    .nav-item svg{width:24px;height:24px;fill:currentColor;margin-bottom:4px}
+    .bottom-nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:#111;display:flex;z-index:999;border-top:1px solid #333}
+    .nav-item{flex:1;texture:1;text-align:center;padding:8px;color:#777;cursor:pointer}
+    .nav-item.active{color:#ff3399}
+    .nav-item svg{width:24px;height:24px;fill:currentColor}
   </style>
 </head>
 <body>
@@ -38,63 +34,36 @@
   <div id="home">
     <div class="header"><div class="logo">Porntoon</div></div>
     <div class="grid">
-      <div class="thumb" onclick="load(1)">
-        <img src="https://cdn.hentai18.net/images/manga/ruris-bitch/oneshot/0.jpg" loading="lazy">
-        <div class="badge">NEW</div>
-        <div class="thumb-title">Ruri's Bitch<br><small>23 pages</small></div>
-      </div>
-      <div class="thumb" onclick="load(2)">
-        <img src="https://pics.hentai.name/000/189/189166/1.webp" loading="lazy">
-        <div class="badge">HOT</div>
-        <div class="thumb-title">Secret Class<br><small>40 pages</small></div>
-      </div>
-      <div class="thumb" onclick="load(3)">
-        <img src="https://cdn.hentai18.net/images/manga/if-boku-to-gasatsu-na-onee-no-seiyoku-shori-seikatsu-docchi-no-ana-ga-kimochi-ii-no-hen/oneshot/0.jpg" loading="lazy">
-        <div class="badge">UP</div>
-        <div class="thumb-title">Onee-chan Sex<br><small>50 pages</small></div>
-      </div>
-      <div class="thumb" onclick="load(4)">
-        <img src="https://cdn.hentai18.net/images/manga/haha-ga-dogeza-shita-hi-2-aware-na-nikubenki-mama-no-choukyou-kiroku/oneshot/0.jpg" loading="lazy">
-        <div class="badge">BIG</div>
-        <div class="thumb-title">Mom's Dogeza 2<br><small>103 pages</small></div>
-      </div>
+      <div class="thumb" onclick="load(1)"><img src="https://corsproxy.io/?https://cdn.hentai18.net/images/manga/ruris-bitch/oneshot/0.jpg" loading="lazy"><div class="badge">NEW</div><div class="thumb-title">Ruri's Bitch<br><small>23 pages</small></div></div>
+      <div class="thumb" onclick="load(2)"><img src="https://corsproxy.io/?https://pics.hentai.name/000/189/189166/1.webp" loading="lazy"><div class="badge">HOT</div><div class="thumb-title">Secret Class<br><small>40 pages</small></div></div>
+      <div class="thumb" onload="load(3)"><img src="https://corsproxy.io/?https://cdn.hentai18.net/images/manga/if-boku-to-gasatsu-na-onee-no-seiyuku-shori-seikatsu-docchi-no-ana-ga-kimochi-ii-no-hen/oneshot/0.jpg" loading="lazy"><div class="badge">UP</div><div class="thumb-title">Onee-chan Sex<br><small>50 pages</small></div></div>
+      <div class="thumb" onclick="load(4)"><img src="https://corsproxy.io/?https://cdn.hentai18.net/images/manga/haha-ga-dogeza-shita-hi-2-aware-na-nikubenki-mama-no-choukyou-kiroku/oneshot/0.jpg" loading="lazy"><div class="badge">BIG</div><div class="thumb-title">Mom's Dogeza 2<br><small>103 pages</small></div></div>
     </div>
   </div>
 
   <div id="container"></div>
-
   <div class="reader-nav" id="readerNav">
-    <div class="progress-text">Page <span id="cur">1</span>/<span id="total">0</span></div>
+    Page <span id="cur">1</span>/<span id="total">0</span>
     <div class="bar"><div class="fill" id="fill"></div></div>
   </div>
 
-  <!-- Navbar toujours visible (même en lecture) -->
   <div class="bottom-nav">
-    <div class="nav-item active" onclick="backHome()">
-      <svg viewBox="0 0 24 24"><path d="M4 21h16V8l-8-5-8 5v13zm12-2H8v-9.85l4-2.5 4 2.5V19z"/></svg>
-      <div>Accueil</div>
-    </div>
-    <div class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2z"/></svg>
-      <div>Hot</div>
-    </div>
-    <div class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 4l8 5v11H4V9l8-5z"/></svg>
-      <div>Librairie</div>
-    </div>
-    <div class="nav-item">
-      <svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/></svg>
-      <div>Plus</div>
-    </div>
+    <div class="nav-item active" onclick="backHome()"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><div>Accueil</div></div>
+    <div class="nav-item"><svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2z"/></svg><div>Hot</div></div>
+    <div class="nav-item"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg><div>Librairie</div></div>
+    <div class="nav-item"><svg viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><div>Plus</div></div>
   </div>
 
   <script>
+    // PROXY CORS GRATUIT ET FIABLE
+    const proxy = "https://corsproxy.io/?";
+    
     const mangas = [
       null,
-      {pages:23, base:"https://cdn.hentai18.net/images/manga/ruris-bitch/oneshot/", ext:".jpg"},
-      {pages:40, base:"https://pics.hentai.name/000/189/189166/", ext:".webp"},
-      {pages:50, base:"https://cdn.hentai18.net/images/manga/if-boku-to-gasatsu-na-onee-no-seiyuku-shori-seikatsu-docchi-no-ana-ga-kimochi-ii-no-hen/oneshot/", ext:".jpg"},
-      {pages:103, base:"https://cdn.hentai18.net/images/manga/haha-ga-dogeza-shita-hi-2-aware-na-nikubenki-mama-no-choukyou-kiroku/oneshot/", ext:".jpg"}
+      {pages:23, base:proxy+"https://cdn.hentai18.net/images/manga/ruris-bitch/oneshot/", ext:".jpg"},
+      {pages:40, base:proxy+"https://pics.hentai.name/000/189/189166/", ext:".webp"},
+      {pages:50, base:proxy+"https://cdn.hentai18.net/images/manga/if-boku-to-gasatsu-na-onee-no-seiyuku-shori-seikatsu-docchi-no-ana-ga-kimochi-ii-no-hen/oneshot/", ext:".jpg"},
+      {pages:103, base:proxy+"https://cdn.hentai18.net/images/manga/haha-ga-dogeza-shita-hi-2-aware-na-nikubenki-mama-no-choukyou-kiroku/oneshot/", ext:".jpg"}
     ];
 
     let current = 0;
@@ -106,8 +75,6 @@
       document.getElementById('container').style.display = 'block';
       document.getElementById('readerNav').style.display = 'flex';
       document.getElementById('total').textContent = m.pages;
-      document.getElementById('cur').textContent = '1';
-      document.getElementById('fill').style.width = '0%';
 
       const cont = document.getElementById('container');
       cont.innerHTML = '';
@@ -125,18 +92,13 @@
       document.getElementById('readerNav').style.display = 'none';
       document.getElementById('container').innerHTML = '';
       current = 0;
-      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-      document.querySelector('.nav-item:nth-child(1)').classList.add('active');
     }
 
     document.getElementById('container').addEventListener('scroll', () => {
       if(!current) return;
-      const cont = document.getElementById('container');
-      const scroll = cont.scrollTop;
-      const height = cont.scrollHeight - cont.clientHeight;
-      if(height <= 0) return;
-      const percent = (scroll / height) * 100;
-      const page = Math.min(Math.round((percent/100) * mangas[current].pages) + 1, mangas[current].pages);
+      const height = document.getElementById('container').scrollHeight - document.getElementById('container').clientHeight;
+      const percent = (document.getElementById('container').scrollTop / height) * 100 || 0;
+      const page = Math.min(Math.round(percent * mangas[current].pages / 100) + 1, mangas[current].pages);
       document.getElementById('cur').textContent = page;
       document.getElementById('fill').style.width = percent + '%';
     });
